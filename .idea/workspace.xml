@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b393f3d4-b86b-4dbb-b82a-5e816fff27fa" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jrs.js" afterPath="$PROJECT_DIR$/jrs.js" />
     </list>
     <ignored path="jrs.dev.iws" />
@@ -26,9 +27,32 @@
       <file leaf-file-name="jrs.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jrs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8496503">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.3916084">
+              <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#616#0" expanded="true" />
+                <element signature="e#1976#2108#0" expanded="true" />
+                <element signature="e#2238#2507#0" expanded="true" />
+                <element signature="e#2797#2918#0" expanded="true" />
+                <element signature="e#3025#3274#0" expanded="true" />
+                <element signature="e#3918#4003#0" expanded="true" />
+                <element signature="e#4910#5179#0" expanded="true" />
+                <element signature="e#5469#5590#0" expanded="true" />
+                <element signature="e#5697#5946#0" expanded="true" />
+                <element signature="e#6288#6373#0" expanded="true" />
+                <element signature="e#6840#7114#0" expanded="true" />
+                <element signature="e#7412#7538#0" expanded="true" />
+                <element signature="e#7650#7904#0" expanded="true" />
+                <element signature="e#8468#8554#0" expanded="true" />
+                <element signature="e#9029#9109#0" expanded="true" />
+                <element signature="e#9185#9221#0" expanded="true" />
+                <element signature="e#9313#9348#0" expanded="true" />
+                <element signature="e#9747#9827#0" expanded="true" />
+                <element signature="e#9912#9977#0" expanded="true" />
+                <element signature="e#10079#10187#0" expanded="true" />
+                <element signature="e#10398#10597#0" expanded="true" />
+                <element signature="e#11707#12164#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,6 +79,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -140,7 +169,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="javascript.nodejs.core.library.configured.version" value="5.0.0" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -266,9 +295,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jrs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8496503">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.3916084">
+          <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#616#0" expanded="true" />
+            <element signature="e#1976#2108#0" expanded="true" />
+            <element signature="e#2238#2507#0" expanded="true" />
+            <element signature="e#2797#2918#0" expanded="true" />
+            <element signature="e#3025#3274#0" expanded="true" />
+            <element signature="e#3918#4003#0" expanded="true" />
+            <element signature="e#4910#5179#0" expanded="true" />
+            <element signature="e#5469#5590#0" expanded="true" />
+            <element signature="e#5697#5946#0" expanded="true" />
+            <element signature="e#6288#6373#0" expanded="true" />
+            <element signature="e#6840#7114#0" expanded="true" />
+            <element signature="e#7412#7538#0" expanded="true" />
+            <element signature="e#7650#7904#0" expanded="true" />
+            <element signature="e#8468#8554#0" expanded="true" />
+            <element signature="e#9029#9109#0" expanded="true" />
+            <element signature="e#9185#9221#0" expanded="true" />
+            <element signature="e#9313#9348#0" expanded="true" />
+            <element signature="e#9747#9827#0" expanded="true" />
+            <element signature="e#9912#9977#0" expanded="true" />
+            <element signature="e#10079#10187#0" expanded="true" />
+            <element signature="e#10398#10597#0" expanded="true" />
+            <element signature="e#11707#12164#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

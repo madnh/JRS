@@ -1,10 +1,10 @@
 /***************************************************************************
- *   JRS - JSON Request Structure                                           *
- *   @version: 0.1.1                                                        *
- *   @author: MaDnh                                                         *
- *   @email: dodanhmanh@gmail.com                                           *
- *   @license: MIT                                                          *
- *                                                                          *
+ *   JRS - JSON Request Structure                                          *
+ *   @version 0.1.1                                                        *
+ *   @author MaDnh                                                         *
+ *   @email dodanhmanh@gmail.com                                           *
+ *   @license MIT                                                          *
+ *                                                                         *
  ***************************************************************************/
 (function () {
 
@@ -16,6 +16,10 @@
         return value.constructor.name === 'Array';
     }
 
+    function asArray(value) {
+        return isArray(value) ? value : [value];
+    }
+
     function isUndefined(value) {
         return typeof value === 'undefined';
     }
@@ -24,14 +28,22 @@
         var result = {};
 
         Array.prototype.slice.call(arguments, 0).forEach(function (obj) {
-            Object.keys(obj).forEach(function (key) {
-                result[key] = obj[key];
-            });
+            if (isObject(obj)) {
+                Object.keys(obj).forEach(function (key) {
+                    result[key] = obj[key];
+                });
+            }
         });
 
         return result;
     }
 
+    /**
+     * JRS - JSON Request Structure
+     * @property {{}} _fields The fields of JSR
+     * @property {{}} _data The data of JSR
+     * @property {{}} _meta The meta of JSR
+     */
     function JRS() {
         this._fields = {};
         this._data = {};
@@ -47,20 +59,48 @@
         }
     }
 
+    /**
+     * Set data as array of items
+     * @param {boolean} as_array True - as array, else as object
+     * @returns {JRS}
+     */
     JRS.prototype.dataAsArray = function (as_array) {
         this._data = as_array ? [] : {};
 
         return this;
     };
-    JRS.prototype.data = function (name) {
-        if (arguments.length > 0) {
-            return this._data[arguments[0].toString()];
+
+    /**
+     * Get data by name or all data, depend on length of arguments
+     * @param {string} name Name of data to return
+     * @param {*} [default_value = undefined] Default value as result when data name is not found. Default is undefined
+     * @returns {*}
+     */
+    JRS.prototype.data = function (name, default_value) {
+        if (!isUndefined(name)) {
+            if (this._data.hasOwnProperty(name)) {
+                return this._data[name];
+            }
+            return default_value;
         }
         return extend(this._data);
     };
+
+    /**
+     * Check if data with name already exists
+     * @param {string} name Data name
+     * @returns {boolean}
+     */
     JRS.prototype.hasData = function (name) {
         return this._data.hasOwnProperty(name);
     };
+
+    /**
+     * Add data with name or object of data name and value
+     * @param {(string|name)} name Name of data. If is object then add each item of it
+     * @param {*} value Data value. Ignored when param name is object
+     * @returns {JRS}
+     */
     JRS.prototype.addData = function (name, value) {
         if (isArray(this._data)) {
             if (isUndefined(value)) {
@@ -72,10 +112,10 @@
                 this._data.push(obj);
             }
         } else {
-            if (name instanceof Object) {
+            if (isObject(name)) {
                 var self = this;
-                name.forEach(function (v, k) {
-                    self._data[k] = v;
+                Object.keys(name).forEach(function (index) {
+                    self._data[index] = name[index];
                 });
             } else {
                 this._data[name] = value;
@@ -85,6 +125,10 @@
         return this;
     };
 
+    /**
+     * Remove data by name, multi name is supported
+     * @returns {JRS}
+     */
     JRS.prototype.removeData = function () {
         if (arguments.length === 0) {
             if (isArray(this._data)) {
@@ -114,20 +158,42 @@
         return this;
     };
 
-    JRS.prototype.meta = function (name) {
-        if (arguments.length > 0) {
-            return this._meta[arguments[0].toString()];
+    /**
+     * Get meta by name or all meta, depend on length of arguments
+     * @param {string} name Name of meta to return
+     * @param {*} [default_value = undefined] Default value as result when meta name is not found. Default is undefined
+     * @returns {*}
+     */
+    JRS.prototype.meta = function (name, default_value) {
+        if (!isUndefined(name)) {
+            if (this._meta.hasOwnProperty(name)) {
+                return this._meta[name];
+            }
+            return default_value;
         }
         return extend(this._meta);
     };
+
+    /**
+     * Check if meta with name already exists
+     * @param {string} name Meta name
+     * @returns {boolean}
+     */
     JRS.prototype.hasMeta = function (name) {
         return this._meta.hasOwnProperty(name);
     };
+
+    /**
+     * Add meta with name or object of meta name and value
+     * @param {(string|name)} name Name of meta. If is object then add each item of it
+     * @param {*} value Meta value. Ignored when param name is object
+     * @returns {JRS}
+     */
     JRS.prototype.addMeta = function (name, value) {
         if (name instanceof Object) {
             var self = this;
-            name.forEach(function (v, k) {
-                self._meta[k] = v;
+            Object.keys(name).forEach(function (index) {
+                self._meta[index] = name[index];
             });
         } else {
             this._meta[name] = value;
@@ -135,7 +201,12 @@
 
         return this;
     };
-    JRS.prototype.removeMeta = function (name) {
+
+    /**
+     * Remove meta by name, multi name is supported
+     * @returns {JRS}
+     */
+    JRS.prototype.removeMeta = function () {
         if (arguments.length === 0) {
             this._meta = {};
         } else {
@@ -151,17 +222,44 @@
         return this;
     };
 
-    JRS.prototype.fields = function () {
+
+    /**
+     * Get field by name or all fields, depend on length of arguments
+     * @param {string} name Name of field to return
+     * @param {*} [default_value = undefined] Default value as result when field name is not found. Default is undefined
+     * @returns {*}
+     */
+    JRS.prototype.fields = function (name, default_value) {
+        if (!isUndefined(name)) {
+            if (this._fields.hasOwnProperty(name)) {
+                return this._fields[name];
+            }
+            return default_value;
+        }
         return extend(this._fields);
     };
+
+    /**
+     * Check if a field with name already exists
+     * @param {string} field Field name
+     * @returns {boolean}
+     */
     JRS.prototype.hasField = function (field) {
         return this._fields.hasOwnProperty(field);
     };
+
+    /**
+     * Add field with name or object of fields name and value
+     * @param {(string|name)} name Name of field. If is object then add each item of it
+     * @param {*} value Field value. Ignored when param name is object
+     * @returns {JRS}
+     */
     JRS.prototype.addField = function (name, value) {
-        if (name instanceof Object) {
+        if (isObject(name)) {
+            var self = this;
             var thisMethod = arguments.callee;
-            name.forEach(function (v, k) {
-                thisMethod(k, v);
+            Object.keys(name).forEach(function (index) {
+                thisMethod.apply(self, [index, name[index]]);
             });
         } else {
             if (name === 'meta' || name === 'data') {
@@ -172,7 +270,12 @@
 
         return this;
     };
-    JRS.prototype.removeFields = function () {
+
+    /**
+     * Remove field by name, multi name is supported
+     * @returns {JRS}
+     */
+    JRS.prototype.removeField = function () {
         if (arguments.length === 0) {
             this._fields = {};
         } else {
@@ -188,6 +291,10 @@
         return this;
     };
 
+    /**
+     * Export as JSON object, ready for request
+     * @returns {{}}
+     */
     JRS.prototype.toJSON = function () {
         var result = {};
 
@@ -216,13 +323,27 @@
 
         return result;
     };
+
+    /**
+     * Export as JSON object, ready for request
+     * @returns {{}}
+     */
     JRS.prototype.valueOf = function () {
         return this.toJSON();
     };
+
+    /**
+     * Export as JSON string
+     * @returns {string}
+     */
     JRS.prototype.toString = function () {
         return JSON.stringify(this.toJSON());
     };
 
+    /**
+     * Export to object of meta, data and fields
+     * @returns {{meta: *, data: *, fields: *}}
+     */
     JRS.prototype.export = function () {
         return {
             meta: extend({}, this._meta),
@@ -231,6 +352,12 @@
         };
     };
 
+    /**
+     * Import from exported data or other instance of JRS
+     * @param {({}|JRS)}exported_data
+     * @param {boolean} override Override existed meta, data, field??
+     * @returns {JRS}
+     */
     JRS.prototype.import = function (exported_data, override) {
         var self = this;
         if (!isObject(exported_data)) {
@@ -262,6 +389,70 @@
         });
 
         return this;
+    };
+
+
+    /**
+     * Transform old request data to new JRS instance
+     * @param {{}} obj Old request data
+     * @param {{}} option Guide for importing.
+     * Includes: meta, data and fields.
+     * Priority: data >> meta >> fields.
+     * Each item of this guide can be true or array of string.
+     * If True then add all current keys of Old request data.
+     * If is array of string then add those keys of Old request data.
+     *
+     * @returns {JRS}
+     */
+    JRS.transform = function (obj, option) {
+        var jrs = new JRS();
+        obj = extend({}, obj);
+        option = extend({
+            meta: [],
+            data: true,
+            fields: []
+        }, isObject(option) ? option : {});
+
+        if (option.data === true) {
+            jrs.addData(obj);
+        } else {
+            asArray(option.data).forEach(function (data_name) {
+                if (obj.hasOwnProperty(data_name)) {
+                    jrs.addData(data_name, obj[data_name]);
+
+                    obj[data_name] = undefined;
+                    delete obj[data_name];
+                }
+            });
+
+            if (option.meta === true) {
+                jrs.addMeta(obj);
+            } else {
+                asArray(option.meta).forEach(function (meta_name) {
+                    if (obj.hasOwnProperty(meta_name)) {
+                        jrs.addMeta(meta_name, obj[meta_name]);
+
+                        obj[meta_name] = undefined;
+                        delete obj[meta_name];
+                    }
+                });
+
+                if (option.fields === true) {
+                    jrs.addField(obj);
+                } else {
+                    asArray(option.fields).forEach(function (field_name) {
+                        if (obj.hasOwnProperty(field_name)) {
+                            jrs.addMeta(field_name, obj[field_name]);
+
+                            obj[field_name] = undefined;
+                            delete obj[field_name];
+                        }
+                    });
+                }
+            }
+        }
+
+        return jrs;
     };
 
     if (typeof module === 'object' && module.hasOwnProperty('exports')) {
