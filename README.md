@@ -32,7 +32,7 @@ nhầm lẫn giữa các thông tin đó và dữ liệu cần xử lý:
 Vậy yêu cầu đặt ra là cần phải có một quy định về cách tổ chức dữ liệu gửi lên server, để có thể xác định các thông tin này rõ ràng.
 JRS giải quyết vấn đề đó bằng cấu trúc như sau:
 
-```js
+```json
 {
     "meta": {
         //Các thông tin mang tính mô tả
@@ -95,6 +95,13 @@ hoặc truyền đi data dạng mảng:
 ```js
 var jrs = new JRS(); //Tạo instance
 ```
+Mặc định field data của JRS là object ({}), khi cần truyền đi dạng array ([]) thì cần phải chuyển đổi thành dạng array TRƯỚC khi thêm data
+```js
+var jrs = new JRS(); //Tạo instance
+jrs.dataAsArray(true); //Chuyển thành dạng array
+jrs.dataAsArray(false); //Chuyển thành dạng object
+```
+
 ### 2. Thêm Data, kiểm tra, lấy về và remove các data đã thêm
 ```js
 //Thêm một

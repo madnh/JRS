@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b393f3d4-b86b-4dbb-b82a-5e816fff27fa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jrs.js" afterPath="$PROJECT_DIR$/jrs.js" />
     </list>
     <ignored path="jrs.dev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/jrs.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+              <caret line="373" column="0" selection-start-line="373" selection-start-column="0" selection-end-line="373" selection-end-column="0" />
               <folding>
                 <element signature="e#662#709#0" expanded="false" />
                 <element signature="e#739#797#0" expanded="false" />
@@ -41,14 +42,6 @@
                 <element signature="e#2598#2749#0" expanded="false" />
                 <element signature="e#2649#2705#0" expanded="false" />
                 <element signature="e#2963#3018#0" expanded="false" />
-                <element signature="e#3326#3911#0" expanded="false" />
-                <element signature="e#3361#3588#0" expanded="false" />
-                <element signature="e#3399#3453#0" expanded="false" />
-                <element signature="e#3459#3578#0" expanded="false" />
-                <element signature="e#3594#3883#0" expanded="false" />
-                <element signature="e#3628#3810#0" expanded="false" />
-                <element signature="e#3722#3794#0" expanded="false" />
-                <element signature="e#3816#3873#0" expanded="false" />
                 <element signature="e#4047#4903#0" expanded="false" />
                 <element signature="e#4085#4236#0" expanded="false" />
                 <element signature="e#4124#4172#0" expanded="false" />
@@ -95,21 +88,10 @@
                 <element signature="e#10019#10072#0" expanded="false" />
                 <element signature="e#10227#10391#0" expanded="false" />
                 <element signature="e#10244#10384#0" expanded="false" />
-                <element signature="e#10725#10761#0" expanded="false" />
-                <element signature="e#10817#10880#0" expanded="false" />
-                <element signature="e#10912#10990#0" expanded="false" />
                 <element signature="e#11073#11211#0" expanded="false" />
                 <element signature="e#11124#11201#0" expanded="false" />
-                <element signature="e#11278#11416#0" expanded="false" />
-                <element signature="e#11329#11406#0" expanded="false" />
                 <element signature="e#11485#11669#0" expanded="false" />
                 <element signature="e#11579#11659#0" expanded="false" />
-                <element signature="e#12208#13769#0" expanded="false" />
-                <element signature="e#12294#12374#0" expanded="false" />
-                <element signature="e#12444#12485#0" expanded="false" />
-                <element signature="e#12491#13742#0" expanded="false" />
-                <element signature="e#12555#12793#0" expanded="false" />
-                <element signature="e#12608#12779#0" expanded="false" />
                 <element signature="e#12835#12884#0" expanded="false" />
                 <element signature="e#12890#13732#0" expanded="false" />
                 <element signature="e#12958#13220#0" expanded="false" />
@@ -128,8 +110,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5606796">
-              <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.93203884">
+              <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -356,7 +338,7 @@
     <entry file="file://$PROJECT_DIR$/jrs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <caret line="373" column="0" selection-start-line="373" selection-start-column="0" selection-end-line="373" selection-end-column="0" />
           <folding>
             <element signature="e#662#709#0" expanded="false" />
             <element signature="e#739#797#0" expanded="false" />
@@ -370,14 +352,6 @@
             <element signature="e#2598#2749#0" expanded="false" />
             <element signature="e#2649#2705#0" expanded="false" />
             <element signature="e#2963#3018#0" expanded="false" />
-            <element signature="e#3326#3911#0" expanded="false" />
-            <element signature="e#3361#3588#0" expanded="false" />
-            <element signature="e#3399#3453#0" expanded="false" />
-            <element signature="e#3459#3578#0" expanded="false" />
-            <element signature="e#3594#3883#0" expanded="false" />
-            <element signature="e#3628#3810#0" expanded="false" />
-            <element signature="e#3722#3794#0" expanded="false" />
-            <element signature="e#3816#3873#0" expanded="false" />
             <element signature="e#4047#4903#0" expanded="false" />
             <element signature="e#4085#4236#0" expanded="false" />
             <element signature="e#4124#4172#0" expanded="false" />
@@ -424,21 +398,10 @@
             <element signature="e#10019#10072#0" expanded="false" />
             <element signature="e#10227#10391#0" expanded="false" />
             <element signature="e#10244#10384#0" expanded="false" />
-            <element signature="e#10725#10761#0" expanded="false" />
-            <element signature="e#10817#10880#0" expanded="false" />
-            <element signature="e#10912#10990#0" expanded="false" />
             <element signature="e#11073#11211#0" expanded="false" />
             <element signature="e#11124#11201#0" expanded="false" />
-            <element signature="e#11278#11416#0" expanded="false" />
-            <element signature="e#11329#11406#0" expanded="false" />
             <element signature="e#11485#11669#0" expanded="false" />
             <element signature="e#11579#11659#0" expanded="false" />
-            <element signature="e#12208#13769#0" expanded="false" />
-            <element signature="e#12294#12374#0" expanded="false" />
-            <element signature="e#12444#12485#0" expanded="false" />
-            <element signature="e#12491#13742#0" expanded="false" />
-            <element signature="e#12555#12793#0" expanded="false" />
-            <element signature="e#12608#12779#0" expanded="false" />
             <element signature="e#12835#12884#0" expanded="false" />
             <element signature="e#12890#13732#0" expanded="false" />
             <element signature="e#12958#13220#0" expanded="false" />
@@ -455,8 +418,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5606796">
-          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.93203884">
+          <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
           <folding />
         </state>
       </provider>
