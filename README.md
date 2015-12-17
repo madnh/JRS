@@ -32,7 +32,7 @@ nhầm lẫn giữa các thông tin đó và dữ liệu cần xử lý:
 Vậy yêu cầu đặt ra là cần phải có một quy định về cách tổ chức dữ liệu gửi lên server, để có thể xác định các thông tin này rõ ràng.
 JRS giải quyết vấn đề đó bằng cấu trúc như sau:
 
-```json
+```js
 {
     "meta": {
         //Các thông tin mang tính mô tả
