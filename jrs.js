@@ -143,11 +143,14 @@
     };
     JRS.prototype.addField = function (name, value) {
         if (name instanceof Object) {
-            var self = this;
+            var thisMethod = arguments.callee;
             name.forEach(function (v, k) {
-                self._fields[k] = v;
+                thisMethod(k, v);
             });
         } else {
+            if (name === 'meta' || name === 'data') {
+                throw new Error('Invalid field name: ' + name + '. This field name is protected');
+            }
             this._fields[name] = value;
         }
     };
@@ -176,11 +179,21 @@
             result.meta = extend(this._meta);
         }
 
+        /**
+         * Add Data
+         */
         if (isArray(this._data)) {
             result.data = this._data.concat();
         } else {
             result.data = extend(this._data);
         }
+
+        this._fields['meta'] = undefined;
+        this._fields['data'] = undefined;
+        delete this._fields['meta'];
+        delete this._fields['data'];
+
+        result = extend(result, this._fields);
 
         return result;
     };
@@ -191,7 +204,7 @@
         return JSON.stringify(this.toJSON());
     };
 
-    if (!isUndefined(module) && isObject(module) && module.hasOwnProperty('exports')) {
+    if (typeof module === 'object' && module.hasOwnProperty('exports')) {
         module.exports = JRS;
     } else {
         this.JRS = JRS;
