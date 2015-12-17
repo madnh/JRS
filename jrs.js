@@ -36,6 +36,15 @@
         this._fields = {};
         this._data = {};
         this._meta = {};
+
+        var self = this;
+        if (arguments.length) {
+            var arg_length = arguments.length;
+            var override = typeof arguments[arg_length - 1] === 'boolean' ? Boolean(arguments[arg_length - 1]) : true;
+            Array.prototype.slice.call(arguments, 0).forEach(function (arg) {
+                self.import(arg, override);
+            });
+        }
     }
 
     JRS.prototype.dataAsArray = function (as_array) {
@@ -72,6 +81,8 @@
                 this._data[name] = value;
             }
         }
+
+        return this;
     };
 
     JRS.prototype.removeData = function () {
@@ -99,6 +110,8 @@
                 });
             }
         }
+
+        return this;
     };
 
     JRS.prototype.meta = function (name) {
@@ -120,6 +133,7 @@
             this._meta[name] = value;
         }
 
+        return this;
     };
     JRS.prototype.removeMeta = function (name) {
         if (arguments.length === 0) {
@@ -133,6 +147,8 @@
                 }
             });
         }
+
+        return this;
     };
 
     JRS.prototype.fields = function () {
@@ -153,6 +169,8 @@
             }
             this._fields[name] = value;
         }
+
+        return this;
     };
     JRS.prototype.removeFields = function () {
         if (arguments.length === 0) {
@@ -165,8 +183,9 @@
                     delete self._fields[name];
                 }
             });
-
         }
+
+        return this;
     };
 
     JRS.prototype.toJSON = function () {
@@ -202,6 +221,47 @@
     };
     JRS.prototype.toString = function () {
         return JSON.stringify(this.toJSON());
+    };
+
+    JRS.prototype.export = function () {
+        return {
+            meta: extend({}, this._meta),
+            data: extend({}, this._data),
+            fields: extend({}, this._fields)
+        };
+    };
+
+    JRS.prototype.import = function (exported_data, override) {
+        var self = this;
+        if (!isObject(exported_data)) {
+            return this;
+        }
+        if (exported_data instanceof this.constructor) {
+            exported_data = exported_data.export();
+        }
+        exported_data = extend({
+            meta: {},
+            data: {},
+            fields: {}
+        }, exported_data);
+
+        Object.keys(exported_data.meta).forEach(function (name) {
+            if (!self.hasMeta(name) || override) {
+                self.addMeta(name, exported_data.meta[name]);
+            }
+        });
+        Object.keys(exported_data.data).forEach(function (name) {
+            if (!self.hasData(name) || override) {
+                self.addData(name, exported_data.data[name]);
+            }
+        });
+        Object.keys(exported_data.fields).forEach(function (name) {
+            if ((name !== 'meta' && name !== 'data') && (!self.hasField(name) || override)) {
+                self.addField(name, exported_data.fields[name]);
+            }
+        });
+
+        return this;
     };
 
     if (typeof module === 'object' && module.hasOwnProperty('exports')) {
